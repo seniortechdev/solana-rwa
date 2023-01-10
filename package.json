@@ -1,0 +1,23 @@
+{
+  "name": "solana-rwa-portal",
+  "version": "0.1.0",
+  "description": "Real World Asset Tokenization Platform on Solana",
+  "private": true,
+  "workspaces": [
+    "app",
+    "sdk",
+    "tests"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "dev": "yarn workspace app dev",
+    "anchor:build": "cd programs/rwa_token && anchor build",
+    "anchor:test": "cd programs/rwa_token && anchor test",
+    "anchor:deploy": "cd programs/rwa_token && anchor deploy"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
