@@ -1,0 +1,49 @@
+Solana RWA Portal - System Architecture
+
+┌─────────────────────────────────────────────────────────────────┐
+│                        Frontend Layer                          │
+├─────────────────────────────────────────────────────────────────┤
+│  Next.js App  │  React Components  │  Wallet Adapter  │  SDK   │
+│               │                    │                  │        │
+│  - Landing    │  - AssetCard       │  - Phantom       │  - RWAClient │
+│  - Assets     │  - CreateModal     │  - Solflare      │  - Utils     │
+│  - Dashboard  │  - BuyModal        │  - Backpack      │  - Types     │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                      Blockchain Layer                          │
+├─────────────────────────────────────────────────────────────────┤
+│  Solana Network  │  Anchor Program  │  SPL Token  │  USDC Token │
+│                  │                  │  Program    │             │
+│  - 65k TPS       │  - initialize_asset │  - Mint   │  - Payments │
+│  - Sub-second    │  - mint_tokens   │  - Transfer │  - Pricing  │
+│    finality      │  - buy_fraction  │  - Burn     │             │
+│  - Low fees      │  - redeem        │             │             │
+└─────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                       Storage Layer                            │
+├─────────────────────────────────────────────────────────────────┤
+│  On-chain Metadata  │  Arweave/IPFS  │  Asset Documents        │
+│                     │                │                         │
+│  - Basic info       │  - Images      │  - Legal certificates   │
+│  - Token supply     │  - Metadata    │  - Appraisal reports    │
+│  - Owner data       │  - Documents   │  - Compliance docs      │
+│  - Status flags     │  - URIs        │  - Audit reports        │
+└─────────────────────────────────────────────────────────────────┘
+
+Data Flow:
+1. User creates asset → Frontend → SDK → Contract → On-chain storage
+2. User buys fraction → Frontend → SDK → Contract → USDC transfer + Token mint
+3. User transfers tokens → Frontend → SDK → Contract → SPL token transfer
+4. Metadata retrieval → Frontend → SDK → Arweave/IPFS → Display
+
+Key Features:
+- Fractional ownership of real-world assets
+- USDC-based trading
+- Secure wallet integration
+- Off-chain metadata storage
+- Real-time portfolio tracking
+- Multi-wallet support
