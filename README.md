@@ -43,7 +43,7 @@ solana-rwa-portal/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/solana-rwa-portal.git
+   git clone https://github.com/seniortechdev/solana-rwa-portal.git
    cd solana-rwa-portal
    ```
 
